@@ -1,0 +1,19 @@
+{
+    "name": "wenyu/http",
+    "description": "http get and post methods",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wenyu",
+            "email": "wenyutech@foxmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Fishtail\\": "src/Fishtail"
+        }
+    }
+}
