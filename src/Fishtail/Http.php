@@ -8,7 +8,7 @@ namespace Fishtail;
  */
 class Http
 {
-    public $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36';
+    static $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36';
     /**
      * GET请求方法
      * @param string $url 请求的url
@@ -25,7 +25,7 @@ class Http
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
         curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-        curl_setopt($curl, CURLOPT_USERAGENT, $this->userAgent);
+        curl_setopt($curl, CURLOPT_USERAGENT, self::$userAgent);
         if ($header) {
             curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
         }
@@ -74,7 +74,7 @@ class Http
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($curl, CURLOPT_AUTOREFERER, 1);
-        curl_setopt($curl, CURLOPT_USERAGENT, $this->userAgent);
+        curl_setopt($curl, CURLOPT_USERAGENT, self::$userAgent);
         curl_setopt($curl, CURLOPT_TIMEOUT, 30);
         if ($header) {
             curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
