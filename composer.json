@@ -1,6 +1,6 @@
 {
     "name": "fishtail/http",
-    "description": "http get and post methods",
+    "description": "Http GET and POST methods.",
     "type": "project",
     "license": "MIT",
     "authors": [
