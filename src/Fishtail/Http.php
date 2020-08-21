@@ -8,9 +8,15 @@ namespace Fishtail;
  */
 class Http
 {
-    // User-Agent
+    /**
+     * User-Agent
+     * @var string
+     */
     static $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.61 Safari/537.36';
-    // 请求超时时间
+    /**
+     * 请求超时时间
+     * @var int
+     */
     static $timeout = 30;
     /**
      * GET请求方法
@@ -35,6 +41,7 @@ class Http
             curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
         }
         if ($cookie) {
+            $cookie = preg_replace('/Cookie: ?/i', '', $cookie);
             curl_setopt($curl, CURLOPT_COOKIE, $cookie);
         }
         curl_setopt($curl, CURLOPT_HEADER, $returnCookie);
@@ -50,9 +57,8 @@ class Http
             foreach ($matches[1] as $value) {
                 $cookie = $value . ';' . $cookie;
             }
-            $info['cookie']  = preg_replace('# #', '', $cookie);
-            $info['body'] = $body;
-            return $info;
+            $cookie = preg_replace('# #', '', $cookie);
+            return compact('cookie', 'body');
         } else {
             return $res;
         }
@@ -85,6 +91,7 @@ class Http
             curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
         }
         if ($cookie) {
+            $cookie = preg_replace('/Cookie: ?/i', '', $cookie);
             curl_setopt($curl, CURLOPT_COOKIE, $cookie);
         }
         curl_setopt($curl, CURLOPT_HEADER, $returnCookie);
@@ -100,9 +107,8 @@ class Http
             foreach ($matches[1] as $value) {
                 $cookie = $value . ';' . $cookie;
             }
-            $info['cookie']  = preg_replace('# #', '', $cookie);
-            $info['body'] = $body;
-            return $info;
+            $cookie = preg_replace('# #', '', $cookie);
+            return compact('cookie', 'body');
         } else {
             return $res;
         }
